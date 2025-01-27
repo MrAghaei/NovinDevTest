@@ -1,12 +1,7 @@
-
+import LoginPage from "@/pages/LoginPage.tsx";
 
 function App() {
-
-
-  return (
-   <div className={'bg-green-800'}>test</div>
-
-  )
+  return <LoginPage />;
 }
 
-export default App
+export default App;
