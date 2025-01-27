@@ -1,7 +1,5 @@
-import LoginPage from "@/pages/login/LoginPage.tsx";
-
 function App() {
-  return <LoginPage />;
+  return null;
 }
 
 export default App;

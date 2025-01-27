@@ -18,7 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form.tsx";
-import { loginSchema, type LoginFormValues } from "./schema.ts";
+import { loginSchema, type LoginFormValues } from "./LoginSchema.ts";
 
 export default function LoginPage() {
   const form = useForm<LoginFormValues>({
