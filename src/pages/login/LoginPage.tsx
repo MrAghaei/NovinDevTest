@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button.tsx";
+import { Input } from "@/components/ui/input.tsx";
 import {
   Card,
   CardHeader,
@@ -9,7 +9,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
+} from "@/components/ui/card.tsx";
 import {
   Form,
   FormControl,
@@ -17,8 +17,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { loginSchema, type LoginFormValues } from "./schema";
+} from "@/components/ui/form.tsx";
+import { loginSchema, type LoginFormValues } from "./schema.ts";
 
 export default function LoginPage() {
   const form = useForm<LoginFormValues>({
@@ -31,7 +31,6 @@ export default function LoginPage() {
   });
 
   function onSubmit(data: LoginFormValues) {
-    // Here you would typically send the login data to your backend
     console.log("Login submitted:", data);
   }
 
