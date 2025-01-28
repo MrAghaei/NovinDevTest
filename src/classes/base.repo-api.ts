@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { TOKEN_KEY } from "@/configs/local-storage-key.config.ts";
 
 const BASE_URL = "https://reqres.in/api";
 
@@ -12,7 +13,18 @@ class BaseRepoApi {
         "Content-Type": "application/json",
       },
     });
-
+    this.instance.interceptors.request.use(
+      (config) => {
+        const token = localStorage.getItem(TOKEN_KEY); // Retrieve token dynamically
+        if (token) {
+          config.headers["Authorization"] = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      },
+    );
     this.instance.interceptors.response.use(
       (response) => response,
       (error) => {
