@@ -11,36 +11,42 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { UserModel } from "@/models/user.model";
 
-interface EditUserDialogProps {
+interface UserDataDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  userData: UserModel;
+  userData?: UserModel;
   onSave: (updatedData: UserModel) => void;
+  isEditDialog: boolean;
 }
 
-export default function EditUserDialog({
+export default function UserDataDialog({
   isOpen,
   onClose,
   userData,
   onSave,
-}: EditUserDialogProps) {
-  const [editedUser, setEditedUser] = useState<UserModel>(userData);
+  isEditDialog,
+}: UserDataDialogProps) {
+  const [userChangedData, setUserChangedData] = useState<UserModel>(
+    userData || ({} as UserModel),
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setEditedUser((prev) => ({ ...prev, [name]: value }));
+    setUserChangedData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(editedUser);
+    onSave(userChangedData);
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit User</DialogTitle>
+          <DialogTitle>
+            {isEditDialog ? "Edit User" : "Create User"}
+          </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
@@ -49,7 +55,7 @@ export default function EditUserDialog({
               <Input
                 id="first_name"
                 name="first_name"
-                value={editedUser.first_name}
+                value={userChangedData.first_name}
                 onChange={handleInputChange}
               />
             </div>
@@ -58,7 +64,7 @@ export default function EditUserDialog({
               <Input
                 id="last_name"
                 name="last_name"
-                value={editedUser.last_name}
+                value={userChangedData.last_name}
                 onChange={handleInputChange}
               />
             </div>
@@ -68,7 +74,7 @@ export default function EditUserDialog({
                 id="email"
                 name="email"
                 type="email"
-                value={editedUser.email}
+                value={userChangedData.email}
                 onChange={handleInputChange}
               />
             </div>
@@ -77,7 +83,9 @@ export default function EditUserDialog({
             <Button type="button" variant="outline" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit">Save Changes</Button>
+            <Button type="submit">
+              {isEditDialog ? "Save Changes" : "Submit"}
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>
