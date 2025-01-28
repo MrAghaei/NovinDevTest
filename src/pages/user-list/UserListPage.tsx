@@ -1,12 +1,12 @@
 import { useUser } from "@/repositories/hooks/useUser.ts";
 import { useEffect, useState } from "react";
-import UserListCard from "@/components/UserListCard.tsx";
+import UserListCard from "@/components/project/UserListCard.tsx";
 import { UserModel } from "@/models/user.model.ts";
 import { useNavigate, useSearchParams } from "react-router";
 import { Pagination } from "@/components/ui/pagination";
 import { DEFAULT_PAGE_SIZE } from "@/configs/pageable.config.ts";
 import { Button } from "@/components/ui/button.tsx";
-import UserDataDialog from "@/components/UserDataDialog.tsx";
+import UserDataDialog from "@/components/project/UserDataDialog.tsx";
 
 function UserListPage() {
   //region hooks

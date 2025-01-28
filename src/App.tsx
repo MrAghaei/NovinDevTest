@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router";
 import UserListPage from "@/pages/user-list/UserListPage.tsx";
 import UserDetailPage from "@/pages/user-detail/UserDetailPage.tsx";
 import UserPage from "@/pages/user/UserPage.tsx";
-import Header from "@/components/Header.tsx";
+import Header from "@/components/project/Header.tsx";
 
 function App() {
   return (

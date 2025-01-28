@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import UserDataDialog from "@/components/UserDataDialog.tsx";
+import UserDataDialog from "@/components/project/UserDataDialog.tsx";
 import { useNavigate, useParams } from "react-router";
 import { UserModel } from "@/models/user.model.ts";
 import Spinner from "@/components/ui/Spinner.tsx";
