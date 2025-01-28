@@ -3,7 +3,7 @@ import { authRepoApi } from "@/repositories/apis/auth.repo-api.ts";
 import { AuthLoginResponseDto } from "@/repositories/dtos/responses/AuthLoginResponseDto.ts";
 import { AuthLoginRequestDto } from "@/repositories/dtos/requests/AuthLoginRequestDto.ts";
 
-class UserService {
+class AuthService {
   // region Request methods
   public async login(
     username: string,
@@ -38,4 +38,4 @@ class UserService {
   // endregion
 }
 
-export const userService = new UserService();
+export const authService = new AuthService();
