@@ -16,11 +16,19 @@ import {
 } from "@/components/ui/alert-dialog";
 import EditUserDialog from "@/components/EditCardDialog.tsx";
 import { useNavigate, useParams } from "react-router";
+import { UserModel } from "@/models/user.model.ts";
 
 export default function UserDetailPage() {
+  //region hooks
   const { id } = useParams();
   const navigate = useNavigate();
-  const { fetchUserById, userData, isUserFetchLoading } = useUser();
+  const {
+    fetchUserById,
+    userData,
+    isUserFetchLoading,
+    deleteUserById,
+    updateUserById,
+  } = useUser();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -30,12 +38,17 @@ export default function UserDetailPage() {
     }
     fetchData().then();
   }, [id, fetchUserById]);
+  //endregion
 
-  const handleDelete = async () => {
-    // await deleteUser(Number(id));
+  //region functions
+  async function handleDelete(): Promise<void> {
+    await deleteUserById(Number(id));
     navigate("/user/list");
-  };
-
+  }
+  async function handleUpdate(updatedData: UserModel): Promise<void> {
+    await updateUserById(Number(id), updatedData);
+  }
+  //endregion
   if (isUserFetchLoading) {
     return <div className={"flex justify-center"}>Loading...</div>;
   }
@@ -110,6 +123,7 @@ export default function UserDetailPage() {
         userData={userData}
         onSave={(updatedData) => {
           console.log("Updated user data:", updatedData);
+          handleUpdate(updatedData);
           setIsEditDialogOpen(false);
         }}
       />

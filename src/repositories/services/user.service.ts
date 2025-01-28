@@ -3,6 +3,7 @@ import { PageModel } from "@/models/page.model.ts";
 import { UserModel } from "@/models/user.model.ts";
 import { User } from "@/repositories/dtos/responses/User.ts";
 import { PageableModel } from "@/models/pageable.model.ts";
+import { UserRequestDto } from "@/repositories/dtos/requests/UserRequestDto.ts";
 
 class UserService {
   // region Request methods
@@ -21,6 +22,18 @@ class UserService {
     const response = await userRepoApi.getUserById(id);
     return this._convertUserToUserModel(response.data);
   }
+
+  public async deleteUserById(id: number): Promise<void> {
+    await userRepoApi.deleteUserById(id);
+  }
+  public async updateUserById(id: number, data: UserModel): Promise<void> {
+    const body = this._convertUserModelToUserRequestDto(data);
+    await userRepoApi.updateUserById(id, body);
+  }
+  public async createUser(data: UserModel): Promise<void> {
+    const body = this._convertUserModelToUserRequestDto(data);
+    await userRepoApi.createUser(body);
+  }
   // endregion
 
   // region Adapter methods
@@ -31,6 +44,13 @@ class UserService {
       id: response.id,
       first_name: response.first_name,
       last_name: response.last_name,
+    };
+  }
+  private _convertUserModelToUserRequestDto(data: UserModel): UserRequestDto {
+    return {
+      email: data.email,
+      first_name: data.first_name,
+      last_name: data.last_name,
     };
   }
   // endregion
