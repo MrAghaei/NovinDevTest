@@ -5,13 +5,18 @@ import UserPage from "@/pages/user/UserPage.tsx";
 
 function App() {
   return (
-    <Routes>
-      <Route path="user" element={<UserPage />}>
-        <Route path="list" element={<UserListPage />} />
-        <Route path="detail/:id" element={<UserDetailPage />} />
-      </Route>
-      <Route path="/" element={<Navigate to="/user/list" replace />} />
-    </Routes>
+    <>
+      <div className={"border-b h-20 bg-red-400"}>header</div>
+      <div className={"container mx-auto py-28"}>
+        <Routes>
+          <Route path="user" element={<UserPage />}>
+            <Route path="list" element={<UserListPage />} />
+            <Route path="detail/:id" element={<UserDetailPage />} />
+          </Route>
+          <Route path="/" element={<Navigate to="/user/list" replace />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
