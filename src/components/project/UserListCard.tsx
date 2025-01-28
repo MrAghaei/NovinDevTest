@@ -13,7 +13,7 @@ function UserListCard({
   return (
     <Card
       onClick={onCardClick}
-      className="hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+      className="hover:shadow-lg transition-shadow duration-300 cursor-pointer dark:shadow-gray-900"
     >
       <CardContent className="p-4 flex items-center space-x-4">
         <Avatar className="h-16 w-16">
@@ -23,10 +23,12 @@ function UserListCard({
           />
         </Avatar>
         <div className="flex-grow">
-          <h3 className="text-lg font-semibold text-gray-800">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
             {data.first_name} {data.last_name}
           </h3>
-          <p className="text-sm text-gray-600">{data.email}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {data.email}
+          </p>
         </div>
       </CardContent>
     </Card>

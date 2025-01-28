@@ -66,7 +66,7 @@ export default function UserDetailPage() {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-white dark:bg-gray-950 dark:text-white">
       <div className={"flex items-center gap-x-10"}>
         <button onClick={handleBackbutton}>
           <ArrowLeft strokeWidth={2.5} size={40} />
