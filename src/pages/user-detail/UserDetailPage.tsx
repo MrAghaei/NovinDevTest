@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@/repositories/hooks/useUser";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   AlertDialog,
@@ -18,6 +18,7 @@ import UserDataDialog from "@/components/UserDataDialog.tsx";
 import { useNavigate, useParams } from "react-router";
 import { UserModel } from "@/models/user.model.ts";
 import Spinner from "@/components/ui/Spinner.tsx";
+import { ArrowLeft } from "lucide-react";
 
 export default function UserDetailPage() {
   //region hooks
@@ -52,6 +53,9 @@ export default function UserDetailPage() {
     await updateUserById(Number(id), updatedData);
     setIsEditDialogOpen(false);
   }
+  function handleBackbutton(): void {
+    navigate("/user/list");
+  }
   //endregion
   if (isUserFetchLoading) {
     return <div className={"flex justify-center"}>Loading...</div>;
@@ -63,11 +67,14 @@ export default function UserDetailPage() {
 
   return (
     <div className="container mx-auto p-4">
-      <button></button>
-      <Card className="max-w-2xl mx-auto">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold">User Details</CardTitle>
-        </CardHeader>
+      <div className={"flex items-center gap-x-10"}>
+        <button onClick={handleBackbutton}>
+          <ArrowLeft strokeWidth={2.5} size={40} />
+        </button>
+        <h1 className={"font-bold text-4xl"}>User Details</h1>
+      </div>
+
+      <Card className="max-w-2xl mx-auto mt-10 pt-5">
         <CardContent>
           <div className="flex items-center space-x-4 mb-4">
             <Avatar className="h-20 w-20">
