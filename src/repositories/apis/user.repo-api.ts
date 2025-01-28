@@ -3,7 +3,7 @@ import { User } from "@/repositories/dtos/responses/User.ts";
 import { PageModel } from "@/models/page.model.ts";
 
 class UserRepoApi {
-  async getAllUsers(): Promise<PageModel<User>> {
+  public async getAllUsers(): Promise<PageModel<User>> {
     return await baseRepoAPI.get("/users");
   }
 }
