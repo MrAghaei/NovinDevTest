@@ -18,7 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form.tsx";
-import { loginSchema, type LoginFormValues } from "./LoginSchema.ts";
+import { loginSchema, type LoginFormValues } from "./login-schema.ts";
 
 export default function LoginPage() {
   const form = useForm<LoginFormValues>({
@@ -95,14 +95,6 @@ export default function LoginPage() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter className="justify-center">
-          <p className="text-sm text-gray-600">
-            Don't have an account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              Sign up
-            </a>
-          </p>
-        </CardFooter>
       </Card>
     </div>
   );
