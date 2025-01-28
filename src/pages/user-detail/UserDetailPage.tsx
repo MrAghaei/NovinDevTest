@@ -17,6 +17,7 @@ import {
 import UserDataDialog from "@/components/UserDataDialog.tsx";
 import { useNavigate, useParams } from "react-router";
 import { UserModel } from "@/models/user.model.ts";
+import Spinner from "@/components/ui/Spinner.tsx";
 
 export default function UserDetailPage() {
   //region hooks
@@ -28,6 +29,8 @@ export default function UserDetailPage() {
     isUserFetchLoading,
     deleteUserById,
     updateUserById,
+    isUpdateUserLoading,
+    isDeleteLoading,
   } = useUser();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
@@ -47,6 +50,7 @@ export default function UserDetailPage() {
   }
   async function handleUpdate(updatedData: UserModel): Promise<void> {
     await updateUserById(Number(id), updatedData);
+    setIsEditDialogOpen(false);
   }
   //endregion
   if (isUserFetchLoading) {
@@ -96,7 +100,10 @@ export default function UserDetailPage() {
             <Button onClick={() => setIsEditDialogOpen(true)}>Edit</Button>
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="destructive">Delete</Button>
+                <Button variant="destructive">
+                  {isDeleteLoading && <Spinner />}
+                  Delete
+                </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -122,10 +129,10 @@ export default function UserDetailPage() {
         onClose={() => setIsEditDialogOpen(false)}
         userData={userData}
         isEditDialog={true}
+        isSubmitLoading={isUpdateUserLoading}
         onSave={(updatedData) => {
           console.log("Updated user data:", updatedData);
           handleUpdate(updatedData);
-          setIsEditDialogOpen(false);
         }}
       />
     </div>
