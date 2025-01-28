@@ -1,6 +1,6 @@
-import type { UserModel } from "@/models/user.model";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import type { UserModel } from "@/models/user.model.ts";
+import { Card, CardContent } from "@/components/ui/card.tsx";
+import { Avatar, AvatarImage } from "@/components/ui/avatar.tsx";
 import { MouseEventHandler } from "react";
 
 function UserListCard({

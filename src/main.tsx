@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import "./index.css";
 import App from "./App.tsx";
 import LoginPage from "@/pages/login/LoginPage.tsx";
-import AuthRouter from "@/components/auth-router/AuthRouter.tsx";
+import AuthRouter from "@/components/container/AuthRouter.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
