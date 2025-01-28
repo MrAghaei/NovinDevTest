@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import EditUserDialog from "@/components/EditCardDialog.tsx";
+import UserDataDialog from "@/components/UserDataDialog.tsx";
 import { useNavigate, useParams } from "react-router";
 import { UserModel } from "@/models/user.model.ts";
 
@@ -117,10 +117,11 @@ export default function UserDetailPage() {
           </div>
         </CardContent>
       </Card>
-      <EditUserDialog
+      <UserDataDialog
         isOpen={isEditDialogOpen}
         onClose={() => setIsEditDialogOpen(false)}
         userData={userData}
+        isEditDialog={true}
         onSave={(updatedData) => {
           console.log("Updated user data:", updatedData);
           handleUpdate(updatedData);
