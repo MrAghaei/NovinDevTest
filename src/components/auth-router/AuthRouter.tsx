@@ -1,7 +1,7 @@
 import { Navigate } from "react-router";
 
 const AuthRouter = ({ children }: { children: any }) => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
 };
 

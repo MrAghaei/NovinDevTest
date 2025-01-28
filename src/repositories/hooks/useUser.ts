@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
-import { userService } from "@/repositories/services/user.service.ts";
-import { UserModel } from "@/models/user.model.ts";
-import { PageModel } from "@/models/page.model.ts";
+import { userService } from "@/repositories/services/user.service";
+import { UserModel } from "@/models/user.model";
+import { PageModel } from "@/models/page.model";
 
 export function useUser() {
   const [isAllUsersFetchLoading, setIsAllUsersFetchLoading] = useState(false);

@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import { authService } from "@/repositories/services/auth.service.ts";
-import { AuthModel } from "@/models/auth.model.ts";
+import { authService } from "@/repositories/services/auth.service";
+import { AuthModel } from "@/models/auth.model";
 
-export function useUser() {
+export function useAuth() {
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [isLogoutLoading, setIsLogoutLoading] = useState(false);
   const [authData, setAuthData] = useState<AuthModel>();
