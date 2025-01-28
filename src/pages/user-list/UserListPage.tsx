@@ -10,8 +10,13 @@ import UserDataDialog from "@/components/UserDataDialog.tsx";
 
 function UserListPage() {
   //region hooks
-  const { fetchUsersData, usersData, isAllUsersFetchLoading, createUser } =
-    useUser();
+  const {
+    fetchUsersData,
+    usersData,
+    isAllUsersFetchLoading,
+    createUser,
+    isCreateUserLoading,
+  } = useUser();
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,6 +43,7 @@ function UserListPage() {
   }
   async function handleCreateUser(updatedData: UserModel): Promise<void> {
     await createUser(updatedData);
+    setIsCreateDialogOpen(false);
   }
   //endregion
 
@@ -59,10 +65,10 @@ function UserListPage() {
         isOpen={isCreateDialogOpen}
         onClose={() => setIsCreateDialogOpen(false)}
         isEditDialog={false}
+        isSubmitLoading={isCreateUserLoading}
         onSave={(createdData) => {
           console.log("Created User:", createdData);
           handleCreateUser(createdData);
-          setIsCreateDialogOpen(false);
         }}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">

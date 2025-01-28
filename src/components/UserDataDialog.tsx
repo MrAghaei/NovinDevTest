@@ -2,14 +2,15 @@ import { useState } from "react";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { UserModel } from "@/models/user.model";
+import Spinner from "@/components/ui/Spinner.tsx";
 
 interface UserDataDialogProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ interface UserDataDialogProps {
   userData?: UserModel;
   onSave: (updatedData: UserModel) => void;
   isEditDialog: boolean;
+  isSubmitLoading: boolean;
 }
 
 export default function UserDataDialog({
@@ -25,6 +27,7 @@ export default function UserDataDialog({
   userData,
   onSave,
   isEditDialog,
+  isSubmitLoading,
 }: UserDataDialogProps) {
   const [userChangedData, setUserChangedData] = useState<UserModel>(
     userData || ({} as UserModel),
@@ -84,6 +87,7 @@ export default function UserDataDialog({
               Cancel
             </Button>
             <Button type="submit">
+              {isSubmitLoading && <Spinner />}
               {isEditDialog ? "Save Changes" : "Submit"}
             </Button>
           </DialogFooter>

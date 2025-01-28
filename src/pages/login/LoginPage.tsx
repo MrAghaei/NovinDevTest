@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input.tsx";
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
 } from "@/components/ui/card.tsx";
 import {
   Form,
@@ -18,9 +17,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form.tsx";
-import { loginSchema, type LoginFormValues } from "./login-schema.ts";
+import { type LoginFormValues, loginSchema } from "./login-schema.ts";
+import { useAuth } from "@/repositories/hooks/useAuth.ts";
+import { useNavigate } from "react-router";
 
 export default function LoginPage() {
+  //region hooks
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -29,11 +33,15 @@ export default function LoginPage() {
       password: "",
     },
   });
+  //endregion
 
-  function onSubmit(data: LoginFormValues) {
+  //region functions
+  async function onSubmit(data: LoginFormValues) {
     console.log("Login submitted:", data);
+    await login(data.username, data.email, data.password);
+    navigate("/");
   }
-
+  //endregion
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <Card className="w-full max-w-md">

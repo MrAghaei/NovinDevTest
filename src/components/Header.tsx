@@ -1,14 +1,21 @@
 import { Button } from "@/components/ui/button.tsx";
 import { useNavigate } from "react-router";
+import { useAuth } from "@/repositories/hooks/useAuth.ts";
+import Spinner from "@/components/ui/Spinner.tsx";
 
 function Header() {
   //region hooks
   const navigate = useNavigate();
+  const { logout, isLogoutLoading } = useAuth();
   //endregion
 
   //region functions
   function handleHeaderNavigation(): void {
     navigate("/");
+  }
+  async function handleLogout(): Promise<void> {
+    await logout();
+    navigate("/login");
   }
   //endregion
   return (
@@ -23,7 +30,15 @@ function Header() {
       >
         NovinDev Test
       </h1>
-      <Button className={"bg-red-600 hover:bg-red-800"}>Log out</Button>
+      <Button
+        onClick={handleLogout}
+        className={
+          "flex items-center justify-center gap-3 bg-red-600 hover:bg-red-800"
+        }
+      >
+        Log out
+        {isLogoutLoading && <Spinner />}
+      </Button>
     </header>
   );
 }

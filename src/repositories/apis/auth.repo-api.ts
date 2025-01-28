@@ -4,6 +4,7 @@ import { AuthLoginRequestDto } from "@/repositories/dtos/requests/AuthLoginReque
 
 class AuthRepoApi {
   public async login(body: AuthLoginRequestDto): Promise<AuthLoginResponseDto> {
+    delete body.username;
     return await baseRepoAPI.post("/login", body);
   }
   public async logout(): Promise<void> {
