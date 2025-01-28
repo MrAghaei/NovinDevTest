@@ -2,11 +2,14 @@ import { userRepoApi } from "@/repositories/apis/user.repo-api.ts";
 import { PageModel } from "@/models/page.model.ts";
 import { UserModel } from "@/models/user.model.ts";
 import { User } from "@/repositories/dtos/responses/User.ts";
+import { PageableModel } from "@/models/pageable.model.ts";
 
 class UserService {
   // region Request methods
-  public async getAllUsers(): Promise<PageModel<UserModel>> {
-    const response = await userRepoApi.getAllUsers();
+  public async getAllUsers(
+    pageable: PageableModel,
+  ): Promise<PageModel<UserModel>> {
+    const response = await userRepoApi.getAllUsers(pageable);
     const convertedUserData = response.data.map(this._convertUserToUserModel);
     return {
       ...response,

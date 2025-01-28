@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { userService } from "@/repositories/services/user.service";
 import { UserModel } from "@/models/user.model";
 import { PageModel } from "@/models/page.model";
+import { PageableModel } from "@/models/pageable.model.ts";
 
 export function useUser() {
   const [isAllUsersFetchLoading, setIsAllUsersFetchLoading] = useState(false);
@@ -9,10 +10,10 @@ export function useUser() {
   const [usersData, setUsersData] = useState<PageModel<UserModel>>();
   const [userData, setUserData] = useState<UserModel>();
 
-  const fetchUsersData = useCallback(async () => {
+  const fetchUsersData = useCallback(async (pageable: PageableModel) => {
     setIsAllUsersFetchLoading(true);
     try {
-      const data = await userService.getAllUsers();
+      const data = await userService.getAllUsers(pageable);
       setUsersData(data);
     } finally {
       setIsAllUsersFetchLoading(false);
