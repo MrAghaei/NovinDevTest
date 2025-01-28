@@ -94,7 +94,7 @@ const PaginationLink = ({
   ...props
 }: ButtonProps & { isActive?: boolean }) => (
   <li className={"cursor-pointer"}>
-    <a
+    <button
       aria-current={isActive ? "page" : undefined}
       className={cn(
         buttonVariants({
@@ -103,10 +103,10 @@ const PaginationLink = ({
         }),
         className,
       )}
-      {...props}
+      onClick={props.onClick}
     >
       {children}
-    </a>
+    </button>
   </li>
 );
 
