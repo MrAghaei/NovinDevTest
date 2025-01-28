@@ -3,5 +3,5 @@ export interface PageModel<T> {
   per_page: number;
   total: number;
   total_pages: number;
-  data: T;
+  data: T[];
 }
