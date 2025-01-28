@@ -45,7 +45,7 @@ export default function UserDataDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className={"dark:text-white"}>
         <DialogHeader>
           <DialogTitle>
             {isEditDialog ? "Edit User" : "Create User"}

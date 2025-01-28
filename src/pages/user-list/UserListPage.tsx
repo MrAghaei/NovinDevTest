@@ -54,7 +54,7 @@ function UserListPage() {
     return <div>No user found!</div>;
   }
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-20 bg-white dark:bg-gray-950 dark:text-white">
       <div className={"flex justify-between"}>
         <h1 className={"font-bold text-4xl"}>Users List</h1>
         <Button
