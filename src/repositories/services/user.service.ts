@@ -19,7 +19,7 @@ class UserService {
 
   public async getUserById(id: number): Promise<UserModel> {
     const response = await userRepoApi.getUserById(id);
-    return this._convertUserToUserModel(response);
+    return this._convertUserToUserModel(response.data);
   }
   // endregion
 
