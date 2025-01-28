@@ -54,13 +54,17 @@ function UserListPage() {
     return <div>No user found!</div>;
   }
   return (
-    <div className="flex flex-col gap-10">
-      <Button
-        onClick={() => setIsCreateDialogOpen(true)}
-        className={"w-32 bg-blue-600 hover:bg-blue-800"}
-      >
-        Create User
-      </Button>
+    <div className="flex flex-col gap-20">
+      <div className={"flex justify-between"}>
+        <h1 className={"font-bold text-4xl"}>Users List</h1>
+        <Button
+          onClick={() => setIsCreateDialogOpen(true)}
+          className={"w-32 bg-blue-600 hover:bg-blue-800"}
+        >
+          Create User
+        </Button>
+      </div>
+
       <UserDataDialog
         isOpen={isCreateDialogOpen}
         onClose={() => setIsCreateDialogOpen(false)}

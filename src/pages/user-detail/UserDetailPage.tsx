@@ -63,9 +63,10 @@ export default function UserDetailPage() {
 
   return (
     <div className="container mx-auto p-4">
+      <button></button>
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">User Details</CardTitle>
+          <CardTitle className="text-3xl font-bold">User Details</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center space-x-4 mb-4">
