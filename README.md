@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# NovinDev Interview Test Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a test assignment for an interview at **NovinDev**. It demonstrates how to interact with a RESTful API using [Reqres.in](https://reqres.in/).
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application is built to showcase integration with the Reqres.in API. It includes functionality for user authentication, data fetching, and basic UI interactions. The goal is to illustrate both API integration and front-end development skills.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **User Authentication**: Login functionality is implemented using the Reqres.in API.
+- **API Integration**: Demonstrates how to interact with external APIs to fetch and display data.
+- **Responsive Design**: The UI is designed to be user-friendly and responsive across devices.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Prerequisites
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Node.js (version 12 or later)
+- A package manager such as npm or yarn
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/novindev-interview-test.git
+   
+## How to Use
+
+### Login
+
+To log in, you can use one of the test users provided by the Reqres.in API. For instance, try using the following credentials:
+
+- **Email:** `eve.holt@reqres.in`
+- **Password:** *(Refer to the [Reqres.in API documentation](https://reqres.in/) for the expected password or use any string if the API accepts any input.)*
+
+For more details on available test users and their credentials, visit the [Reqres.in API documentation](https://reqres.in/).
